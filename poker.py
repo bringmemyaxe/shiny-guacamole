@@ -278,123 +278,60 @@ while True:
         global three_of_a_kind
         global two_pairs
         global jacks_or_better
-        global current_cards
-        global must_be_better_than
-        current_card_meanings = []
-        for card in your_cards:
-            temp_data = list(card)
-            for meaning in temp_data:
-                current_card_meanings.append(meaning)
         royal_flush = False
         check_royal_flush()
         if royal_flush:
-            if current_cards:
-                must_be_better_than = 'royal flush'
-            else:
-                if must_be_better_than == 'royal flush':
-                    probability_to_win -= 2
-                else:
-                    probability_to_win += 250
+            probability_to_win += 1
         else:
             straight_flush = False
             check_straight_flush()
             if straight_flush:
-                if current_cards:
-                    must_be_better_than = 'straight flush'
-                else:
-                    if must_be_better_than == 'royal flush' or must_be_better_than == 'straight flush':
-                        probability_to_win -= 2
-                    else:
-                        probability_to_win += 50
+                probability_to_win += 1
             else:
                 four_of_a_kind = False
+                current_card_meanings = []
+                for card in your_cards:
+                    temp_data = list(card)
+                    for meaning in temp_data:
+                        current_card_meanings.append(meaning)
                 check_four_of_a_kind()
                 if four_of_a_kind:
-                    if current_cards:
-                        must_be_better_than = 'four of a kind'
-                    else:
-                        if must_be_better_than == 'royal flush' or must_be_better_than == 'straight flush' or must_be_better_than == 'four of a kind':
-                            probability_to_win -= 2
-                        else:
-                            probability_to_win += 25
+                    probability_to_win += 1
                 else:
                     full_house = False
                     check_full_house()
                     if full_house:
-                        if current_cards:
-                            must_be_better_than = 'full house'
-                        else:
-                            if must_be_better_than == 'royal flush' or must_be_better_than == 'straight flush' or must_be_better_than == 'four of a kind' or must_be_better_than == 'full house':
-                                probability_to_win -= 2
-                            else:
-                                probability_to_win += 9
+                        probability_to_win += 1
                     else:
                         flush = False
                         check_flush()
                         if flush:
-                            if current_cards:
-                                must_be_better_than = 'flush'
-                            else:
-                                if must_be_better_than == 'royal flush' or must_be_better_than == 'straight flush' or must_be_better_than == 'four of a kind' or must_be_better_than == 'full house' or must_be_better_than == 'flush':
-                                    probability_to_win -= 2
-                                else:
-                                    probability_to_win += 6
+                            probability_to_win += 1
                         else:
                             straight = False
                             check_straight()
                             if straight:
-                                if current_cards:
-                                    must_be_better_than = 'straight'
-                                else:
-                                    if must_be_better_than == 'royal flush' or must_be_better_than == 'straight flush' or must_be_better_than == 'four of a kind' or must_be_better_than == 'full house' or must_be_better_than == 'flush' or must_be_better_than == 'straight':
-                                        probability_to_win -= 2
-                                    else:
-                                        probability_to_win += 4
+                                probability_to_win += 1
                             else:
                                 three_of_a_kind = False
                                 check_three_of_a_kind()
                                 if three_of_a_kind:
-                                    if current_cards:
-                                        must_be_better_than = 'three of a kind'
-                                    else:
-                                        if must_be_better_than == 'royal flush' or must_be_better_than == 'straight flush' or must_be_better_than == 'four of a kind' or must_be_better_than == 'full house' or must_be_better_than == 'flush' or must_be_better_than == 'straight' or must_be_better_than == 'three of a kind':
-                                            probability_to_win -= 2
-                                        else:
-                                            probability_to_win += 3
+                                    probability_to_win += 1
                                 else:
                                     two_pairs = False
                                     check_two_pairs()
                                     if two_pairs:
-                                        if current_cards:
-                                            must_be_better_than = 'two pairs'
-                                        else:
-                                            if must_be_better_than == 'royal flush' or must_be_better_than == 'straight flush' or must_be_better_than == 'four of a kind' or must_be_better_than == 'full house' or must_be_better_than == 'flush' or must_be_better_than == 'straight' or must_be_better_than == 'three of a kind' or must_be_better_than == 'two pairs':
-                                                probability_to_win -= 2
-                                            else:
-                                                probability_to_win += 2
+                                        probability_to_win += 1
                                     else:
                                         jacks_or_better = False
                                         check_jacks_or_better()
                                         if jacks_or_better:
-                                            if current_cards:
-                                                must_be_better_than = 'jacks or better'
-                                            else:
-                                                if must_be_better_than == 'royal flush' or must_be_better_than == 'straight flush' or must_be_better_than == 'four of a kind' or must_be_better_than == 'full house' or must_be_better_than == 'flush' or must_be_better_than == 'straight' or must_be_better_than == 'three of a kind' or must_be_better_than == 'two pairs' or must_be_better_than == 'jacks or better':
-                                                    probability_to_win -= 2
-                                                else:
-                                                    probability_to_win += 1
-                                        else:
-                                            if current_cards:
-                                                must_be_better_than = 'empty'
-                                                probability_to_win -= 9999999
-                                            else:
-                                                probability_to_win -= 2
+                                            probability_to_win += 1
 
 
     def parser(hold_1st_card, hold_2nd_card, hold_3rd_card, hold_4th_card, hold_5th_card):
         global your_cards
         global probability_to_win
-        global current_cards
         global number_of_non_held_cards
         global checked_TTTTT
         global checked_TTTTF
@@ -429,20 +366,7 @@ while True:
         global checked_FFFFT
         global checked_FFFFF
         your_cards = []
-        current_cards = False
         probability_to_win = 0
-        if number_of_non_held_cards == 1:
-            probability_to_win += 47
-        elif number_of_non_held_cards == 2:
-            probability_to_win += 2162
-            probability_to_win -= 36
-        elif number_of_non_held_cards == 3:
-            probability_to_win += 97290
-            probability_to_win -= 1932
-        elif number_of_non_held_cards == 4:
-            probability_to_win += 4280760
-        elif number_of_non_held_cards == 5:
-            probability_to_win += 184072680
         if hold_1st_card:
             your_cards.append(first_card)
             if hold_2nd_card:
@@ -453,7 +377,6 @@ while True:
                         your_cards.append(fourth_card)
                         if hold_5th_card:
                             your_cards.append(fifth_card)
-                            current_cards = True
                             check()
                             your_cards.remove(fifth_card)
                         else:
@@ -724,6 +647,16 @@ while True:
                                             your_cards.remove(new_card3)
                                 your_cards.remove(new_card2)
                     your_cards.remove(new_card1)
+        if number_of_non_held_cards == 1:
+            probability_to_win = (probability_to_win / 47) * 100
+        elif number_of_non_held_cards == 2:
+            probability_to_win = (probability_to_win / 2162) * 100
+        elif number_of_non_held_cards == 3:
+            probability_to_win = (probability_to_win / 97290) * 100
+        elif number_of_non_held_cards == 4:
+            probability_to_win = (probability_to_win / 4280760) * 100
+        elif number_of_non_held_cards == 5:
+            probability_to_win = (probability_to_win / 184072680) * 100
         if hold_1st_card:
             if hold_2nd_card:
                 if hold_3rd_card:
@@ -820,15 +753,7 @@ while True:
                             checked_FFFFF = probability_to_win
 
 
-    mode = input('''
-        FIRST MODE WILL COUNT WHICH ONE CARD IS THE BEST CHOICE TO CHANGE HOLDING THE OTHERS
-        SECOND MODE WILL DO THE SAME BUT CHANGING TWO CARDS
-        THIRD MODE -- CHANGING THREE CARDS
-        FOURTH MODE...
-        FIFTH...
-        BE CAREFUL: THE MORE CARDS YOU CHOOSE TO CHANGE, THE LONGER YOU WILL HAVE TO WAIT
-
-        CHOOSE MODE: ''')
+    mode = input('CHOOSE MODE: ')
     if mode == '1':
         number_of_non_held_cards = 0
         parser(True, True, True, True, True)  # TTTTT  # 0
