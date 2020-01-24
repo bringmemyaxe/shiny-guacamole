@@ -1,4 +1,5 @@
 import itertools
+import sys
 
 while True:
     input_is_not_filled = True
@@ -32,6 +33,15 @@ while True:
                                             all_cards.remove(fifth_card)
                                             your_cards.append(fifth_card)
                                             input_is_not_filled = False
+
+
+    def progressbar(value, endvalue, bar_length=20):
+        percent = float(value) / endvalue
+        arrow = '-' * int(round(percent * bar_length) - 1) + '>'
+        spaces = ' ' * (bar_length - len(arrow))
+
+        sys.stdout.write("\rPercent: [{0}] {1}%".format(arrow + spaces, int(round(percent))))
+        sys.stdout.flush()
 
 
     def check_royal_flush():
@@ -267,6 +277,8 @@ while True:
 
 
     def check():
+        global current_iteration
+        global end_iteration
         global royal_flush
         global probability_to_win
         global straight_flush
@@ -278,6 +290,8 @@ while True:
         global three_of_a_kind
         global two_pairs
         global jacks_or_better
+        current_iteration += 1
+        progressbar(current_iteration, end_iteration)
         royal_flush = False
         check_royal_flush()
         if royal_flush:
@@ -331,8 +345,10 @@ while True:
 
     def parser(hold_1st_card, hold_2nd_card, hold_3rd_card, hold_4th_card, hold_5th_card):
         global your_cards
-        global probability_to_win
         global number_of_non_held_cards
+        global end_iteration
+        global current_iteration
+        global probability_to_win
         global checked_TTTTT
         global checked_TTTTF
         global checked_TTTFT
@@ -366,6 +382,18 @@ while True:
         global checked_FFFFT
         global checked_FFFFF
         your_cards = []
+        if number_of_non_held_cards == 0:
+            end_iteration = 1
+        elif number_of_non_held_cards == 1:
+            end_iteration = 47
+        elif number_of_non_held_cards == 2:
+            end_iteration = 2162
+        elif number_of_non_held_cards == 3:
+            end_iteration = 97290
+        elif number_of_non_held_cards == 4:
+            end_iteration = 4280760
+        elif number_of_non_held_cards == 5:
+            end_iteration = 184072680
         probability_to_win = 0
         if hold_1st_card:
             your_cards.append(first_card)
@@ -756,8 +784,10 @@ while True:
     mode = input('CHOOSE MODE: ')
     if mode == '1':
         number_of_non_held_cards = 0
+        current_iteration = 0
         parser(True, True, True, True, True)  # TTTTT  # 0
         number_of_non_held_cards = 1
+        current_iteration = 0
         parser(True, True, True, True, False)  # TTTTF  # 1
         parser(True, True, True, False, True)  # TTTFT  # 1
         parser(True, True, False, True, True)  # TTFTT  # 1
@@ -771,14 +801,17 @@ while True:
         print(checked_FTTTT)
     elif mode == '2':
         number_of_non_held_cards = 0
+        current_iteration = 0
         parser(True, True, True, True, True)  # TTTTT  # 0
         number_of_non_held_cards = 1
+        current_iteration = 0
         parser(True, True, True, True, False)  # TTTTF  # 1
         parser(True, True, True, False, True)  # TTTFT  # 1
         parser(True, True, False, True, True)  # TTFTT  # 1
         parser(True, False, True, True, True)  # TFTTT  # 1
         parser(False, True, True, True, True)  # FTTTT  # 1
         number_of_non_held_cards = 2
+        current_iteration = 0
         parser(True, True, True, False, False)  # TTTFF  # 2
         parser(True, True, False, True, False)  # TTFTF  # 2
         parser(True, True, False, False, True)  # TTFFT  # 2
@@ -807,14 +840,17 @@ while True:
         print(checked_FFTTT)
     elif mode == '3':
         number_of_non_held_cards = 0
+        current_iteration = 0
         parser(True, True, True, True, True)  # TTTTT  # 0
         number_of_non_held_cards = 1
+        current_iteration = 0
         parser(True, True, True, True, False)  # TTTTF  # 1
         parser(True, True, True, False, True)  # TTTFT  # 1
         parser(True, True, False, True, True)  # TTFTT  # 1
         parser(True, False, True, True, True)  # TFTTT  # 1
         parser(False, True, True, True, True)  # FTTTT  # 1
         number_of_non_held_cards = 2
+        current_iteration = 0
         parser(True, True, True, False, False)  # TTTFF  # 2
         parser(True, True, False, True, False)  # TTFTF  # 2
         parser(True, True, False, False, True)  # TTFFT  # 2
@@ -826,6 +862,7 @@ while True:
         parser(False, True, False, True, True)  # FTFTT  # 2
         parser(False, False, True, True, True)  # FFTTT  # 2
         number_of_non_held_cards = 3
+        current_iteration = 0
         parser(True, True, False, False, False)  # TTFFF  # 3
         parser(True, False, True, False, False)  # TFTFF  # 3
         parser(True, False, False, True, False)  # TFFTF  # 3
@@ -864,14 +901,17 @@ while True:
         print(checked_FFFTT)
     elif mode == '4':
         number_of_non_held_cards = 0
+        current_iteration = 0
         parser(True, True, True, True, True)  # TTTTT  # 0
         number_of_non_held_cards = 1
+        current_iteration = 0
         parser(True, True, True, True, False)  # TTTTF  # 1
         parser(True, True, True, False, True)  # TTTFT  # 1
         parser(True, True, False, True, True)  # TTFTT  # 1
         parser(True, False, True, True, True)  # TFTTT  # 1
         parser(False, True, True, True, True)  # FTTTT  # 1
         number_of_non_held_cards = 2
+        current_iteration = 0
         parser(True, True, True, False, False)  # TTTFF  # 2
         parser(True, True, False, True, False)  # TTFTF  # 2
         parser(True, True, False, False, True)  # TTFFT  # 2
@@ -883,6 +923,7 @@ while True:
         parser(False, True, False, True, True)  # FTFTT  # 2
         parser(False, False, True, True, True)  # FFTTT  # 2
         number_of_non_held_cards = 3
+        current_iteration = 0
         parser(True, True, False, False, False)  # TTFFF  # 3
         parser(True, False, True, False, False)  # TFTFF  # 3
         parser(True, False, False, True, False)  # TFFTF  # 3
@@ -894,6 +935,7 @@ while True:
         parser(False, False, True, False, True)  # FFTFT  # 3
         parser(False, False, False, True, True)  # FFFTT  # 3
         number_of_non_held_cards = 4
+        current_iteration = 0
         parser(True, False, False, False, False)  # TFFFF  # 4
         parser(False, True, False, False, False)  # FTFFF  # 4
         parser(False, False, True, False, False)  # FFTFF  # 4
@@ -932,14 +974,17 @@ while True:
         print(checked_FFFFT)
     elif mode == '5':
         number_of_non_held_cards = 0
+        current_iteration = 0
         parser(True, True, True, True, True)  # TTTTT  # 0
         number_of_non_held_cards = 1
+        current_iteration = 0
         parser(True, True, True, True, False)  # TTTTF  # 1
         parser(True, True, True, False, True)  # TTTFT  # 1
         parser(True, True, False, True, True)  # TTFTT  # 1
         parser(True, False, True, True, True)  # TFTTT  # 1
         parser(False, True, True, True, True)  # FTTTT  # 1
         number_of_non_held_cards = 2
+        current_iteration = 0
         parser(True, True, True, False, False)  # TTTFF  # 2
         parser(True, True, False, True, False)  # TTFTF  # 2
         parser(True, True, False, False, True)  # TTFFT  # 2
@@ -951,6 +996,7 @@ while True:
         parser(False, True, False, True, True)  # FTFTT  # 2
         parser(False, False, True, True, True)  # FFTTT  # 2
         number_of_non_held_cards = 3
+        current_iteration = 0
         parser(True, True, False, False, False)  # TTFFF  # 3
         parser(True, False, True, False, False)  # TFTFF  # 3
         parser(True, False, False, True, False)  # TFFTF  # 3
@@ -962,12 +1008,14 @@ while True:
         parser(False, False, True, False, True)  # FFTFT  # 3
         parser(False, False, False, True, True)  # FFFTT  # 3
         number_of_non_held_cards = 4
+        current_iteration = 0
         parser(True, False, False, False, False)  # TFFFF  # 4
         parser(False, True, False, False, False)  # FTFFF  # 4
         parser(False, False, True, False, False)  # FFTFF  # 4
         parser(False, False, False, True, False)  # FFFTF  # 4
         parser(False, False, False, False, True)  # FFFFT  # 4
         number_of_non_held_cards = 5
+        current_iteration = 0
         parser(False, False, False, False, False)  # FFFFF  # 5
         print(checked_TTTTT)
         print(checked_TTTTF)
