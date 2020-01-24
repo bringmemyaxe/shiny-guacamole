@@ -286,7 +286,6 @@ def check():
                     probability_to_win -= 1
                 else:
                     probability_to_win += 50
-                    print('straight flush')
         else:
             four_of_a_kind = False
             check_four_of_a_kind()
