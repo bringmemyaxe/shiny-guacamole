@@ -31,168 +31,381 @@ while input_is_not_filled:
                                         all_cards.remove(fifth_card)
                                         your_cards.append(fifth_card)
                                         input_is_not_filled = False
-suit_C = [tup[0] + tup[1] for tup in itertools.product(ranks, 'C')]
-suit_D = [tup[0] + tup[1] for tup in itertools.product(ranks, 'D')]
-suit_H = [tup[0] + tup[1] for tup in itertools.product(ranks, 'H')]
-suit_S = [tup[0] + tup[1] for tup in itertools.product(ranks, 'S')]
 def check_royal_flush():
     global royal_flush
     if 'AC' in your_cards and '2C' in your_cards and '3C' in your_cards and '4C' in your_cards and '5C' in your_cards:
         royal_flush = True
-    if 'AD' in your_cards and '2D' in your_cards and '3D' in your_cards and '4D' in your_cards and '5D' in your_cards:
+    elif 'AD' in your_cards and '2D' in your_cards and '3D' in your_cards and '4D' in your_cards and '5D' in your_cards:
         royal_flush = True
-    if 'AH' in your_cards and '2H' in your_cards and '3H' in your_cards and '4H' in your_cards and '5H' in your_cards:
+    elif 'AH' in your_cards and '2H' in your_cards and '3H' in your_cards and '4H' in your_cards and '5H' in your_cards:
         royal_flush = True
-    if 'AS' in your_cards and '2S' in your_cards and '3S' in your_cards and '4S' in your_cards and '5S' in your_cards:
+    elif 'AS' in your_cards and '2S' in your_cards and '3S' in your_cards and '4S' in your_cards and '5S' in your_cards:
         royal_flush = True
 def check_straight_flush():
     global straight_flush
     if '2C' in your_cards and '3C' in your_cards and '4C' in your_cards and '5C' in your_cards and '6C' in your_cards:
         straight_flush = True
-    if '3C' in your_cards and '4C' in your_cards and '5C' in your_cards and '6C' in your_cards and '7C' in your_cards:
+    elif '3C' in your_cards and '4C' in your_cards and '5C' in your_cards and '6C' in your_cards and '7C' in your_cards:
         straight_flush = True
-    if '4C' in your_cards and '5C' in your_cards and '6C' in your_cards and '7C' in your_cards and '8C' in your_cards:
+    elif '4C' in your_cards and '5C' in your_cards and '6C' in your_cards and '7C' in your_cards and '8C' in your_cards:
         straight_flush = True
-    if '5C' in your_cards and '6C' in your_cards and '7C' in your_cards and '8C' in your_cards and '9C' in your_cards:
+    elif '5C' in your_cards and '6C' in your_cards and '7C' in your_cards and '8C' in your_cards and '9C' in your_cards:
         straight_flush = True
-    if '6C' in your_cards and '7C' in your_cards and '8C' in your_cards and '9C' in your_cards and '10C' in your_cards:
+    elif '6C' in your_cards and '7C' in your_cards and '8C' in your_cards and '9C' in your_cards and '10C' in your_cards:
         straight_flush = True
-    if '7C' in your_cards and '8C' in your_cards and '9C' in your_cards and '10C' in your_cards and 'JC' in your_cards:
+    elif '7C' in your_cards and '8C' in your_cards and '9C' in your_cards and '10C' in your_cards and 'JC' in your_cards:
         straight_flush = True
-    if '8C' in your_cards and '9C' in your_cards and '10C' in your_cards and 'JC' in your_cards and 'QC' in your_cards:
+    elif '8C' in your_cards and '9C' in your_cards and '10C' in your_cards and 'JC' in your_cards and 'QC' in your_cards:
         straight_flush = True
-    if '9C' in your_cards and '10C' in your_cards and 'JC' in your_cards and 'QC' in your_cards and 'KC' in your_cards:
+    elif '9C' in your_cards and '10C' in your_cards and 'JC' in your_cards and 'QC' in your_cards and 'KC' in your_cards:
         straight_flush = True
-    if '2D' in your_cards and '3D' in your_cards and '4D' in your_cards and '5D' in your_cards and '6D' in your_cards:
+    elif '2D' in your_cards and '3D' in your_cards and '4D' in your_cards and '5D' in your_cards and '6D' in your_cards:
         straight_flush = True
-    if '3D' in your_cards and '4D' in your_cards and '5D' in your_cards and '6D' in your_cards and '7D' in your_cards:
+    elif '3D' in your_cards and '4D' in your_cards and '5D' in your_cards and '6D' in your_cards and '7D' in your_cards:
         straight_flush = True
-    if '4D' in your_cards and '5D' in your_cards and '6D' in your_cards and '7D' in your_cards and '8D' in your_cards:
+    elif '4D' in your_cards and '5D' in your_cards and '6D' in your_cards and '7D' in your_cards and '8D' in your_cards:
         straight_flush = True
-    if '5D' in your_cards and '6D' in your_cards and '7D' in your_cards and '8D' in your_cards and '9D' in your_cards:
+    elif '5D' in your_cards and '6D' in your_cards and '7D' in your_cards and '8D' in your_cards and '9D' in your_cards:
         straight_flush = True
-    if '6D' in your_cards and '7D' in your_cards and '8D' in your_cards and '9D' in your_cards and '10D' in your_cards:
+    elif '6D' in your_cards and '7D' in your_cards and '8D' in your_cards and '9D' in your_cards and '10D' in your_cards:
         straight_flush = True
-    if '7D' in your_cards and '8D' in your_cards and '9D' in your_cards and '10D' in your_cards and 'JD' in your_cards:
+    elif '7D' in your_cards and '8D' in your_cards and '9D' in your_cards and '10D' in your_cards and 'JD' in your_cards:
         straight_flush = True
-    if '8D' in your_cards and '9D' in your_cards and '10D' in your_cards and 'JD' in your_cards and 'QD' in your_cards:
+    elif '8D' in your_cards and '9D' in your_cards and '10D' in your_cards and 'JD' in your_cards and 'QD' in your_cards:
         straight_flush = True
-    if '9D' in your_cards and '10D' in your_cards and 'JD' in your_cards and 'QD' in your_cards and 'KD' in your_cards:
+    elif '9D' in your_cards and '10D' in your_cards and 'JD' in your_cards and 'QD' in your_cards and 'KD' in your_cards:
         straight_flush = True
-    if '2H' in your_cards and '3H' in your_cards and '4H' in your_cards and '5H' in your_cards and '6H' in your_cards:
+    elif '2H' in your_cards and '3H' in your_cards and '4H' in your_cards and '5H' in your_cards and '6H' in your_cards:
         straight_flush = True
-    if '3H' in your_cards and '4H' in your_cards and '5H' in your_cards and '6H' in your_cards and '7H' in your_cards:
+    elif '3H' in your_cards and '4H' in your_cards and '5H' in your_cards and '6H' in your_cards and '7H' in your_cards:
         straight_flush = True
-    if '4H' in your_cards and '5H' in your_cards and '6H' in your_cards and '7H' in your_cards and '8H' in your_cards:
+    elif '4H' in your_cards and '5H' in your_cards and '6H' in your_cards and '7H' in your_cards and '8H' in your_cards:
         straight_flush = True
-    if '5H' in your_cards and '6H' in your_cards and '7H' in your_cards and '8H' in your_cards and '9H' in your_cards:
+    elif '5H' in your_cards and '6H' in your_cards and '7H' in your_cards and '8H' in your_cards and '9H' in your_cards:
         straight_flush = True
-    if '6H' in your_cards and '7H' in your_cards and '8H' in your_cards and '9H' in your_cards and '10H' in your_cards:
+    elif '6H' in your_cards and '7H' in your_cards and '8H' in your_cards and '9H' in your_cards and '10H' in your_cards:
         straight_flush = True
-    if '7H' in your_cards and '8H' in your_cards and '9H' in your_cards and '10H' in your_cards and 'JH' in your_cards:
+    elif '7H' in your_cards and '8H' in your_cards and '9H' in your_cards and '10H' in your_cards and 'JH' in your_cards:
         straight_flush = True
-    if '8H' in your_cards and '9H' in your_cards and '10H' in your_cards and 'JH' in your_cards and 'QH' in your_cards:
+    elif '8H' in your_cards and '9H' in your_cards and '10H' in your_cards and 'JH' in your_cards and 'QH' in your_cards:
         straight_flush = True
-    if '9H' in your_cards and '10H' in your_cards and 'JH' in your_cards and 'QH' in your_cards and 'KH' in your_cards:
+    elif '9H' in your_cards and '10H' in your_cards and 'JH' in your_cards and 'QH' in your_cards and 'KH' in your_cards:
         straight_flush = True
-    if '2S' in your_cards and '3S' in your_cards and '4S' in your_cards and '5S' in your_cards and '6S' in your_cards:
+    elif '2S' in your_cards and '3S' in your_cards and '4S' in your_cards and '5S' in your_cards and '6S' in your_cards:
         straight_flush = True
-    if '3S' in your_cards and '4S' in your_cards and '5S' in your_cards and '6S' in your_cards and '7S' in your_cards:
+    elif '3S' in your_cards and '4S' in your_cards and '5S' in your_cards and '6S' in your_cards and '7S' in your_cards:
         straight_flush = True
-    if '4S' in your_cards and '5S' in your_cards and '6S' in your_cards and '7S' in your_cards and '8S' in your_cards:
+    elif '4S' in your_cards and '5S' in your_cards and '6S' in your_cards and '7S' in your_cards and '8S' in your_cards:
         straight_flush = True
-    if '5S' in your_cards and '6S' in your_cards and '7S' in your_cards and '8S' in your_cards and '9S' in your_cards:
+    elif '5S' in your_cards and '6S' in your_cards and '7S' in your_cards and '8S' in your_cards and '9S' in your_cards:
         straight_flush = True
-    if '6S' in your_cards and '7S' in your_cards and '8S' in your_cards and '9S' in your_cards and '10S' in your_cards:
+    elif '6S' in your_cards and '7S' in your_cards and '8S' in your_cards and '9S' in your_cards and '10S' in your_cards:
         straight_flush = True
-    if '7S' in your_cards and '8S' in your_cards and '9S' in your_cards and '10S' in your_cards and 'JS' in your_cards:
+    elif '7S' in your_cards and '8S' in your_cards and '9S' in your_cards and '10S' in your_cards and 'JS' in your_cards:
         straight_flush = True
-    if '8S' in your_cards and '9S' in your_cards and '10S' in your_cards and 'JS' in your_cards and 'QS' in your_cards:
+    elif '8S' in your_cards and '9S' in your_cards and '10S' in your_cards and 'JS' in your_cards and 'QS' in your_cards:
         straight_flush = True
-    if '9S' in your_cards and '10S' in your_cards and 'JS' in your_cards and 'QS' in your_cards and 'KS' in your_cards:
+    elif '9S' in your_cards and '10S' in your_cards and 'JS' in your_cards and 'QS' in your_cards and 'KS' in your_cards:
         straight_flush = True
 def check_four_of_a_kind():
-    if your_cards[0] in suit_C and your_cards[1] in suit_C and your_cards[2] in suit_C and your_cards[3] in suit_C:
+    global four_of_a_kind
+    if current_card_meanings.count('A') == 4:
         four_of_a_kind = True
-    if your_cards[0] in suit_C and your_cards[1] in suit_C and your_cards[2] in suit_C and your_cards[4] in suit_C:
+    elif current_card_meanings.count('2') == 4:
         four_of_a_kind = True
-    if your_cards[0] in suit_C and your_cards[1] in suit_C and your_cards[3] in suit_C and your_cards[4] in suit_C:
+    elif current_card_meanings.count('3') == 4:
         four_of_a_kind = True
-    if your_cards[0] in suit_C and your_cards[2] in suit_C and your_cards[3] in suit_C and your_cards[4] in suit_C:
+    elif current_card_meanings.count('4') == 4:
         four_of_a_kind = True
-    if your_cards[1] in suit_C and your_cards[2] in suit_C and your_cards[3] in suit_C and your_cards[4] in suit_C:
+    elif current_card_meanings.count('5') == 4:
         four_of_a_kind = True
-    if your_cards[0] in suit_D and your_cards[1] in suit_D and your_cards[2] in suit_D and your_cards[3] in suit_D:
+    elif current_card_meanings.count('6') == 4:
         four_of_a_kind = True
-    if your_cards[0] in suit_D and your_cards[1] in suit_D and your_cards[2] in suit_D and your_cards[4] in suit_D:
+    elif current_card_meanings.count('7') == 4:
         four_of_a_kind = True
-    if your_cards[0] in suit_D and your_cards[1] in suit_D and your_cards[3] in suit_D and your_cards[4] in suit_D:
+    elif current_card_meanings.count('8') == 4:
         four_of_a_kind = True
-    if your_cards[0] in suit_D and your_cards[2] in suit_D and your_cards[3] in suit_D and your_cards[4] in suit_D:
+    elif current_card_meanings.count('9') == 4:
         four_of_a_kind = True
-    if your_cards[1] in suit_D and your_cards[2] in suit_D and your_cards[3] in suit_D and your_cards[4] in suit_D:
+    elif current_card_meanings.count('0') == 4:
         four_of_a_kind = True
-    if your_cards[0] in suit_H and your_cards[1] in suit_H and your_cards[2] in suit_H and your_cards[3] in suit_H:
+    elif current_card_meanings.count('J') == 4:
         four_of_a_kind = True
-    if your_cards[0] in suit_H and your_cards[1] in suit_H and your_cards[2] in suit_H and your_cards[4] in suit_H:
+    elif current_card_meanings.count('Q') == 4:
         four_of_a_kind = True
-    if your_cards[0] in suit_H and your_cards[1] in suit_H and your_cards[3] in suit_H and your_cards[4] in suit_H:
+    elif current_card_meanings.count('K') == 4:
         four_of_a_kind = True
-    if your_cards[0] in suit_H and your_cards[2] in suit_H and your_cards[3] in suit_H and your_cards[4] in suit_H:
-        four_of_a_kind = True
-    if your_cards[1] in suit_H and your_cards[2] in suit_H and your_cards[3] in suit_H and your_cards[4] in suit_H:
-        four_of_a_kind = True
-    if your_cards[0] in suit_S and your_cards[1] in suit_S and your_cards[2] in suit_S and your_cards[3] in suit_S:
-        four_of_a_kind = True
-    if your_cards[0] in suit_S and your_cards[1] in suit_S and your_cards[2] in suit_S and your_cards[4] in suit_S:
-        four_of_a_kind = True
-    if your_cards[0] in suit_S and your_cards[1] in suit_S and your_cards[3] in suit_S and your_cards[4] in suit_S:
-        four_of_a_kind = True
-    if your_cards[0] in suit_S and your_cards[2] in suit_S and your_cards[3] in suit_S and your_cards[4] in suit_S:
-        four_of_a_kind = True
-    if your_cards[1] in suit_S and your_cards[2] in suit_S and your_cards[3] in suit_S and your_cards[4] in suit_S:
-        four_of_a_kind = True
-def count_probability():
-    global probability_to_win
-    print(probability_to_win)
+def check_full_house():
+    global full_house
+    for three in ranks:
+        for two in ranks:
+            if current_card_meanings.count(three) == 3 and current_card_meanings.count(two) == 2:
+                full_house = True
+def check_flush():
+    global flush
+    for suit in suits:
+        if current_card_meanings.count(suit) == 5:
+            flush = True
+def check_straight():
+    global straight
+    if current_card_meanings.count('A') == 1:
+        if current_card_meanings.count('2') == 1:
+            if current_card_meanings.count('3') == 1:
+                if current_card_meanings.count('4') == 1:
+                    if current_card_meanings.count('5') == 1:
+                        straight = True
+    elif current_card_meanings.count('2') == 1:
+        if current_card_meanings.count('3') == 1:
+            if current_card_meanings.count('4') == 1:
+                if current_card_meanings.count('5') == 1:
+                    if current_card_meanings.count('6') == 1:
+                        straight = True
+    elif current_card_meanings.count('3') == 1:
+        if current_card_meanings.count('4') == 1:
+            if current_card_meanings.count('5') == 1:
+                if current_card_meanings.count('6') == 1:
+                    if current_card_meanings.count('7') == 1:
+                        straight = True
+    elif current_card_meanings.count('4') == 1:
+        if current_card_meanings.count('5') == 1:
+            if current_card_meanings.count('6') == 1:
+                if current_card_meanings.count('7') == 1:
+                    if current_card_meanings.count('8') == 1:
+                        straight = True
+    elif current_card_meanings.count('5') == 1:
+        if current_card_meanings.count('6') == 1:
+            if current_card_meanings.count('7') == 1:
+                if current_card_meanings.count('8') == 1:
+                    if current_card_meanings.count('9') == 1:
+                        straight = True
+    elif current_card_meanings.count('6') == 1:
+        if current_card_meanings.count('7') == 1:
+            if current_card_meanings.count('8') == 1:
+                if current_card_meanings.count('9') == 1:
+                    if current_card_meanings.count('0') == 1:
+                        straight = True
+    elif current_card_meanings.count('7') == 1:
+        if current_card_meanings.count('8') == 1:
+            if current_card_meanings.count('9') == 1:
+                if current_card_meanings.count('0') == 1:
+                    if current_card_meanings.count('J') == 1:
+                        straight = True
+    elif current_card_meanings.count('8') == 1:
+        if current_card_meanings.count('9') == 1:
+            if current_card_meanings.count('0') == 1:
+                if current_card_meanings.count('J') == 1:
+                    if current_card_meanings.count('Q') == 1:
+                        straight = True
+    elif current_card_meanings.count('9') == 1:
+        if current_card_meanings.count('0') == 1:
+            if current_card_meanings.count('J') == 1:
+                if current_card_meanings.count('Q') == 1:
+                    if current_card_meanings.count('K') == 1:
+                        straight = True
+def check_three_of_a_kind():
+    global three_of_a_kind
+    if current_card_meanings.count('A') == 3:
+        three_of_a_kind = True
+    elif current_card_meanings.count('2') == 3:
+        three_of_a_kind = True
+    elif current_card_meanings.count('3') == 3:
+        three_of_a_kind = True
+    elif current_card_meanings.count('4') == 3:
+        three_of_a_kind = True
+    elif current_card_meanings.count('5') == 3:
+        three_of_a_kind = True
+    elif current_card_meanings.count('6') == 3:
+        three_of_a_kind = True
+    elif current_card_meanings.count('7') == 3:
+        three_of_a_kind = True
+    elif current_card_meanings.count('8') == 3:
+        three_of_a_kind = True
+    elif current_card_meanings.count('9') == 3:
+        three_of_a_kind = True
+    elif current_card_meanings.count('0') == 3:
+        three_of_a_kind = True
+    elif current_card_meanings.count('J') == 3:
+        three_of_a_kind = True
+    elif current_card_meanings.count('Q') == 3:
+        three_of_a_kind = True
+    elif current_card_meanings.count('K') == 3:
+        three_of_a_kind = True
+def check_two_pairs():
+    global two_pairs
+    for first_pair in ranks:
+        for second_pair in ranks:
+            if current_card_meanings.count(first_pair) == 2 and current_card_meanings.count(second_pair) == 2:
+                if first_pair != second_pair:
+                    two_pairs = True
+def check_jacks_or_better():
+    global jacks_or_better
+    if current_card_meanings.count('J') == 2:
+        jacks_or_better = True
+    elif current_card_meanings.count('Q') == 2:
+        jacks_or_better = True
+    elif current_card_meanings.count('K') == 2:
+        jacks_or_better = True
 def check():
     global royal_flush
     global probability_to_win
     global straight_flush
     global four_of_a_kind
+    global current_card_meanings
     global full_house
     global flush
     global straight
     global three_of_a_kind
     global two_pairs
     global jacks_or_better
+    global current_cards
+    global must_be_better_than
+    current_card_meanings = []
+    for card in your_cards:
+        temp_data = list(card)
+        for meaning in temp_data:
+            current_card_meanings.append(meaning)
     royal_flush = False
     check_royal_flush()
     if royal_flush:
-        probability_to_win += 250
+        if current_cards:
+            must_be_better_than = 'royal flush'
+        else:
+            if must_be_better_than == 'royal flush':
+                probability_to_win -= 1
+            else:
+                probability_to_win += 250
+                print('royal flush')
     else:
         straight_flush = False
         check_straight_flush()
         if straight_flush:
-            probability_to_win += 50
+            if current_cards:
+                must_be_better_than = 'straight flush'
+            else:
+                if must_be_better_than == 'royal flush' or must_be_better_than == 'straight flush':
+                    probability_to_win -= 1
+                else:
+                    probability_to_win += 50
+                    print('straight flush')
         else:
             four_of_a_kind = False
             check_four_of_a_kind()
             if four_of_a_kind:
-                probability_to_win += 25
+                if current_cards:
+                    must_be_better_than = 'four of a kind'
+                else:
+                    if must_be_better_than == 'royal flush' or must_be_better_than == 'straight flush' or must_be_better_than == 'four of a kind':
+                        probability_to_win -= 1
+                    else:
+                        probability_to_win += 25
             else:
                 full_house = False
-                #check_full_house()
-
-    #check_flush()
-    #check_straight()
-    #check_three_of_a_kind()
-    #check_two_pairs()
-    #check_jacks_or_better()
-    count_probability()
+                check_full_house()
+                if full_house:
+                    if current_cards:
+                        must_be_better_than = 'full house'
+                    else:
+                        if must_be_better_than == 'royal flush' or must_be_better_than == 'straight flush' or must_be_better_than == 'four of a kind' or must_be_better_than == 'full house':
+                            probability_to_win -= 1
+                        else:
+                            probability_to_win += 9
+                else:
+                    flush = False
+                    check_flush()
+                    if flush:
+                        if current_cards:
+                            must_be_better_than = 'flush'
+                        else:
+                            if must_be_better_than == 'royal flush' or must_be_better_than == 'straight flush' or must_be_better_than == 'four of a kind' or must_be_better_than == 'full house' or must_be_better_than == 'flush':
+                                probability_to_win -= 1
+                            else:
+                                probability_to_win += 6
+                    else:
+                        straight = False
+                        check_straight()
+                        if straight:
+                            if current_cards:
+                                must_be_better_than = 'straight'
+                            else:
+                                if must_be_better_than == 'royal flush' or must_be_better_than == 'straight flush' or must_be_better_than == 'four of a kind' or must_be_better_than == 'full house' or must_be_better_than == 'flush' or must_be_better_than == 'straight':
+                                    probability_to_win -= 1
+                                else:
+                                    probability_to_win += 4
+                                    print('straight')
+                        else:
+                            three_of_a_kind = False
+                            check_three_of_a_kind()
+                            if three_of_a_kind:
+                                if current_cards:
+                                    must_be_better_than = 'three of a kind'
+                                else:
+                                    if must_be_better_than == 'royal flush' or must_be_better_than == 'straight flush' or must_be_better_than == 'four of a kind' or must_be_better_than == 'full house' or must_be_better_than == 'flush' or must_be_better_than == 'straight' or must_be_better_than == 'three of a kind':
+                                        probability_to_win -= 1
+                                    else:
+                                        probability_to_win += 3
+                            else:
+                                two_pairs = False
+                                check_two_pairs()
+                                if two_pairs:
+                                    if current_cards:
+                                        must_be_better_than = 'two pairs'
+                                    else:
+                                        if must_be_better_than == 'royal flush' or must_be_better_than == 'straight flush' or must_be_better_than == 'four of a kind' or must_be_better_than == 'full house' or must_be_better_than == 'flush' or must_be_better_than == 'straight' or must_be_better_than == 'three of a kind' or must_be_better_than == 'two pairs':
+                                            probability_to_win -= 1
+                                        else:
+                                            probability_to_win += 2
+                                else:
+                                    jacks_or_better = False
+                                    check_jacks_or_better()
+                                    if jacks_or_better:
+                                        if current_cards:
+                                            must_be_better_than = 'jacks or better'
+                                        else:
+                                            if must_be_better_than == 'royal flush' or must_be_better_than == 'straight flush' or must_be_better_than == 'four of a kind' or must_be_better_than == 'full house' or must_be_better_than == 'flush' or must_be_better_than == 'straight' or must_be_better_than == 'three of a kind' or must_be_better_than == 'two pairs' or must_be_better_than == 'jacks or better':
+                                                probability_to_win -= 1
+                                            else:
+                                                probability_to_win += 1
+                                                print('jacks or better')
+                                    else:
+                                        probability_to_win -= 1
 def parser(hold_1st_card, hold_2nd_card, hold_3rd_card, hold_4th_card, hold_5th_card):
+    global your_cards
     global probability_to_win
+    global current_cards
+    global checked_TTTTT
+    global checked_TTTTF
+    global checked_TTTFT
+    global checked_TTFTT
+    global checked_TFTTT
+    global checked_FTTTT
+    global checked_TTTFF
+    global checked_TTFTF
+    global checked_TTFFT
+    global checked_TFTTF
+    global checked_TFTFT
+    global checked_TFFTT
+    global checked_FTTTF
+    global checked_FTTFT
+    global checked_FTFTT
+    global checked_FFTTT
+    global checked_TTFFF
+    global checked_TFTFF
+    global checked_TFFTF
+    global checked_TFFFT
+    global checked_FTTFF
+    global checked_FTFTF
+    global checked_FTFFT
+    global checked_FFTTF
+    global checked_FFTFT
+    global checked_FFFTT
+    global checked_TFFFF
+    global checked_FTFFF
+    global checked_FFTFF
+    global checked_FFFTF
+    global checked_FFFFT
+    global checked_FFFFF
     your_cards = []
+    current_cards = False
     probability_to_win = 0
     if hold_1st_card:
         your_cards.append(first_card)
@@ -204,6 +417,7 @@ def parser(hold_1st_card, hold_2nd_card, hold_3rd_card, hold_4th_card, hold_5th_
                     your_cards.append(fourth_card)
                     if hold_5th_card:
                         your_cards.append(fifth_card)
+                        current_cards = True
                         check()
                         your_cards.remove(fifth_card)
                     else:
@@ -474,6 +688,100 @@ def parser(hold_1st_card, hold_2nd_card, hold_3rd_card, hold_4th_card, hold_5th_
                                         your_cards.remove(new_card3)
                             your_cards.remove(new_card2)
                 your_cards.remove(new_card1)
+    if hold_1st_card:
+        if hold_2nd_card:
+            if hold_3rd_card:
+                if hold_4th_card:
+                    if hold_5th_card:
+                        checked_TTTTT = probability_to_win
+                    else:
+                        checked_TTTTF = probability_to_win
+                else:
+                    if hold_5th_card:
+                        checked_TTTFT = probability_to_win
+                    else:
+                        checked_TTTFF = probability_to_win
+            else:
+                if hold_4th_card:
+                    if hold_5th_card:
+                        checked_TTFTT = probability_to_win
+                    else:
+                        checked_TTFTF = probability_to_win
+                else:
+                    if hold_5th_card:
+                        checked_TTFFT = probability_to_win
+                    else:
+                        checked_TTFFF = probability_to_win
+        else:
+            if hold_3rd_card:
+                if hold_4th_card:
+                    if hold_5th_card:
+                        checked_TFTTT = probability_to_win
+                    else:
+                        checked_TFTTF = probability_to_win
+                else:
+                    if hold_5th_card:
+                        checked_TFTFT = probability_to_win
+                    else:
+                        checked_TFTFF = probability_to_win
+            else:
+                if hold_4th_card:
+                    if hold_5th_card:
+                        checked_TFFTT = probability_to_win
+                    else:
+                        checked_TFFTF = probability_to_win
+                else:
+                    if hold_5th_card:
+                        checked_TFFFT = probability_to_win
+                    else:
+                        checked_TFFFF = probability_to_win
+    else:
+        if hold_2nd_card:
+            if hold_3rd_card:
+                if hold_4th_card:
+                    if hold_5th_card:
+                        checked_FTTTT = probability_to_win
+                    else:
+                        checked_FTTTF = probability_to_win
+                else:
+                    if hold_5th_card:
+                        checked_FTTFT = probability_to_win
+                    else:
+                        checked_FTTFF = probability_to_win
+            else:
+                if hold_4th_card:
+                    if hold_5th_card:
+                        checked_FTFTT = probability_to_win
+                    else:
+                        checked_FTFTF = probability_to_win
+                else:
+                    if hold_5th_card:
+                        checked_FTFFT = probability_to_win
+                    else:
+                        checked_FTFFF = probability_to_win
+        else:
+            if hold_3rd_card:
+                if hold_4th_card:
+                    if hold_5th_card:
+                        checked_FFTTT = probability_to_win
+                    else:
+                        checked_FFTTF = probability_to_win
+                else:
+                    if hold_5th_card:
+                        checked_FFTFT = probability_to_win
+                    else:
+                        checked_FFTFF = probability_to_win
+            else:
+                if hold_4th_card:
+                    if hold_5th_card:
+                        checked_FFFTT = probability_to_win
+                    else:
+                        checked_FFFTF = probability_to_win
+                else:
+                    if hold_5th_card:
+                        checked_FFFFT = probability_to_win
+                    else:
+                        checked_FFFFF = probability_to_win
 while True:
     mode = input('''
 FIRST MODE WILL COUNT WHICH ONE CARD IS THE BEST CHOICE TO CHANGE HOLDING THE OTHERS
@@ -485,118 +793,229 @@ BE CAREFUL: THE MORE CARDS YOU CHOOSE TO CHANGE, THE MORE TIME YOU WILL HAVE TO 
 
 CHOOSE MODE: ''')
     if mode == '1':
-        parser(True, True, True, True, True)
-        parser(True, True, True, True, False)
-        parser(True, True, True, False, True)
-        parser(True, True, False, True, True)
-        parser(True, False, True, True, True)
-        parser(False, True, True, True, True)
+        parser(True, True, True, True, True)  # TTTTT  # 0
+        parser(True, True, True, True, False)  # TTTTF  # 1
+        parser(True, True, True, False, True)  # TTTFT  # 1
+        parser(True, True, False, True, True)  # TTFTT  # 1
+        parser(True, False, True, True, True)  # TFTTT  # 1
+        parser(False, True, True, True, True)  # FTTTT  # 1
+        print(checked_TTTTT)
+        print(checked_TTTTF)
+        print(checked_TTTFT)
+        print(checked_TTFTT)
+        print(checked_TFTTT)
+        print(checked_FTTTT)
     elif mode == '2':
-        parser(True, True, True, True, True)
-        parser(True, True, True, True, False)
-        parser(True, True, True, False, True)
-        parser(True, True, False, True, True)
-        parser(True, False, True, True, True)
-        parser(False, True, True, True, True)
-        parser(True, True, True, False, False)
-        parser(True, True, False, True, False)
-        parser(True, True, False, False, True)
-        parser(True, False, True, True, False)
-        parser(True, False, True, False, True)
-        parser(True, False, False, True, True)
-        parser(False, True, True, True, False)
-        parser(False, True, True, False, True)
-        parser(False, True, False, True, True)
-        parser(False, False, True, True, True)
+        parser(True, True, True, True, True)  # TTTTT  # 0
+        parser(True, True, True, True, False)  # TTTTF  # 1
+        parser(True, True, True, False, True)  # TTTFT  # 1
+        parser(True, True, False, True, True)  # TTFTT  # 1
+        parser(True, False, True, True, True)  # TFTTT  # 1
+        parser(False, True, True, True, True)  # FTTTT  # 1
+        parser(True, True, True, False, False)  # TTTFF  # 2
+        parser(True, True, False, True, False)  # TTFTF  # 2
+        parser(True, True, False, False, True)  # TTFFT  # 2
+        parser(True, False, True, True, False)  # TFTTF  # 2
+        parser(True, False, True, False, True)  # TFTFT  # 2
+        parser(True, False, False, True, True)  # TFFTT  # 2
+        parser(False, True, True, True, False)  # FTTTF  # 2
+        parser(False, True, True, False, True)  # FTTFT  # 2
+        parser(False, True, False, True, True)  # FTFTT  # 2
+        parser(False, False, True, True, True)  # FFTTT  # 2
+        print(checked_TTTTT)
+        print(checked_TTTTF)
+        print(checked_TTTFT)
+        print(checked_TTFTT)
+        print(checked_TFTTT)
+        print(checked_FTTTT)
+        print(checked_TTTFF)
+        print(checked_TTFTF)
+        print(checked_TTFFT)
+        print(checked_TFTTF)
+        print(checked_TFTFT)
+        print(checked_TFFTT)
+        print(checked_FTTTF)
+        print(checked_FTTFT)
+        print(checked_FTFTT)
+        print(checked_FFTTT)
     elif mode == '3':
-        parser(True, True, True, True, True)
-        parser(True, True, True, True, False)
-        parser(True, True, True, False, True)
-        parser(True, True, False, True, True)
-        parser(True, False, True, True, True)
-        parser(False, True, True, True, True)
-        parser(True, True, True, False, False)
-        parser(True, True, False, True, False)
-        parser(True, True, False, False, True)
-        parser(True, False, True, True, False)
-        parser(True, False, True, False, True)
-        parser(True, False, False, True, True)
-        parser(False, True, True, True, False)
-        parser(False, True, True, False, True)
-        parser(False, True, False, True, True)
-        parser(False, False, True, True, True)
-        parser(True, True, False, False, False)
-        parser(True, False, True, False, False)
-        parser(True, False, False, True, False)
-        parser(True, False, False, False, True)
-        parser(False, True, True, False, False)
-        parser(False, True, False, True, False)
-        parser(False, True, False, False, True)
-        parser(False, False, True, True, False)
-        parser(False, False, True, False, True)
-        parser(False, False, False, True, True)
+        parser(True, True, True, True, True)  # TTTTT  # 0
+        parser(True, True, True, True, False)  # TTTTF  # 1
+        parser(True, True, True, False, True)  # TTTFT  # 1
+        parser(True, True, False, True, True)  # TTFTT  # 1
+        parser(True, False, True, True, True)  # TFTTT  # 1
+        parser(False, True, True, True, True)  # FTTTT  # 1
+        parser(True, True, True, False, False)  # TTTFF  # 2
+        parser(True, True, False, True, False)  # TTFTF  # 2
+        parser(True, True, False, False, True)  # TTFFT  # 2
+        parser(True, False, True, True, False)  # TFTTF  # 2
+        parser(True, False, True, False, True)  # TFTFT  # 2
+        parser(True, False, False, True, True)  # TFFTT  # 2
+        parser(False, True, True, True, False)  # FTTTF  # 2
+        parser(False, True, True, False, True)  # FTTFT  # 2
+        parser(False, True, False, True, True)  # FTFTT  # 2
+        parser(False, False, True, True, True)  # FFTTT  # 2
+        parser(True, True, False, False, False)  # TTFFF  # 3
+        parser(True, False, True, False, False)  # TFTFF  # 3
+        parser(True, False, False, True, False)  # TFFTF  # 3
+        parser(True, False, False, False, True)  # TFFFT  # 3
+        parser(False, True, True, False, False)  # FTTFF  # 3
+        parser(False, True, False, True, False)  # FTFTF  # 3
+        parser(False, True, False, False, True)  # FTFFT  # 3
+        parser(False, False, True, True, False)  # FFTTF  # 3
+        parser(False, False, True, False, True)  # FFTFT  # 3
+        parser(False, False, False, True, True)  # FFFTT  # 3
+        print(checked_TTTTT)
+        print(checked_TTTTF)
+        print(checked_TTTFT)
+        print(checked_TTFTT)
+        print(checked_TFTTT)
+        print(checked_FTTTT)
+        print(checked_TTTFF)
+        print(checked_TTFTF)
+        print(checked_TTFFT)
+        print(checked_TFTTF)
+        print(checked_TFTFT)
+        print(checked_TFFTT)
+        print(checked_FTTTF)
+        print(checked_FTTFT)
+        print(checked_FTFTT)
+        print(checked_FFTTT)
+        print(checked_TTFFF)
+        print(checked_TFTFF)
+        print(checked_TFFTF)
+        print(checked_TFFFT)
+        print(checked_FTTFF)
+        print(checked_FTFTF)
+        print(checked_FTFFT)
+        print(checked_FFTTF)
+        print(checked_FFTFT)
+        print(checked_FFFTT)
     elif mode == '4':
-        parser(True, True, True, True, True)
-        parser(True, True, True, True, False)
-        parser(True, True, True, False, True)
-        parser(True, True, False, True, True)
-        parser(True, False, True, True, True)
-        parser(False, True, True, True, True)
-        parser(True, True, True, False, False)
-        parser(True, True, False, True, False)
-        parser(True, True, False, False, True)
-        parser(True, False, True, True, False)
-        parser(True, False, True, False, True)
-        parser(True, False, False, True, True)
-        parser(False, True, True, True, False)
-        parser(False, True, True, False, True)
-        parser(False, True, False, True, True)
-        parser(False, False, True, True, True)
-        parser(True, True, False, False, False)
-        parser(True, False, True, False, False)
-        parser(True, False, False, True, False)
-        parser(True, False, False, False, True)
-        parser(False, True, True, False, False)
-        parser(False, True, False, True, False)
-        parser(False, True, False, False, True)
-        parser(False, False, True, True, False)
-        parser(False, False, True, False, True)
-        parser(False, False, False, True, True)
-        parser(True, False, False, False, False)
-        parser(False, True, False, False, False)
-        parser(False, False, True, False, False)
-        parser(False, False, False, True, False)
-        parser(False, False, False, False, True)
+        parser(True, True, True, True, True)  # TTTTT  # 0
+        parser(True, True, True, True, False)  # TTTTF  # 1
+        parser(True, True, True, False, True)  # TTTFT  # 1
+        parser(True, True, False, True, True)  # TTFTT  # 1
+        parser(True, False, True, True, True)  # TFTTT  # 1
+        parser(False, True, True, True, True)  # FTTTT  # 1
+        parser(True, True, True, False, False)  # TTTFF  # 2
+        parser(True, True, False, True, False)  # TTFTF  # 2
+        parser(True, True, False, False, True)  # TTFFT  # 2
+        parser(True, False, True, True, False)  # TFTTF  # 2
+        parser(True, False, True, False, True)  # TFTFT  # 2
+        parser(True, False, False, True, True)  # TFFTT  # 2
+        parser(False, True, True, True, False)  # FTTTF  # 2
+        parser(False, True, True, False, True)  # FTTFT  # 2
+        parser(False, True, False, True, True)  # FTFTT  # 2
+        parser(False, False, True, True, True)  # FFTTT  # 2
+        parser(True, True, False, False, False)  # TTFFF  # 3
+        parser(True, False, True, False, False)  # TFTFF  # 3
+        parser(True, False, False, True, False)  # TFFTF  # 3
+        parser(True, False, False, False, True)  # TFFFT  # 3
+        parser(False, True, True, False, False)  # FTTFF  # 3
+        parser(False, True, False, True, False)  # FTFTF  # 3
+        parser(False, True, False, False, True)  # FTFFT  # 3
+        parser(False, False, True, True, False)  # FFTTF  # 3
+        parser(False, False, True, False, True)  # FFTFT  # 3
+        parser(False, False, False, True, True)  # FFFTT  # 3
+        parser(True, False, False, False, False)  # TFFFF  # 4
+        parser(False, True, False, False, False)  # FTFFF  # 4
+        parser(False, False, True, False, False)  # FFTFF  # 4
+        parser(False, False, False, True, False)  # FFFTF  # 4
+        parser(False, False, False, False, True)  # FFFFT  # 4
+        print(checked_TTTTT)
+        print(checked_TTTTF)
+        print(checked_TTTFT)
+        print(checked_TTFTT)
+        print(checked_TFTTT)
+        print(checked_FTTTT)
+        print(checked_TTTFF)
+        print(checked_TTFTF)
+        print(checked_TTFFT)
+        print(checked_TFTTF)
+        print(checked_TFTFT)
+        print(checked_TFFTT)
+        print(checked_FTTTF)
+        print(checked_FTTFT)
+        print(checked_FTFTT)
+        print(checked_FFTTT)
+        print(checked_TTFFF)
+        print(checked_TFTFF)
+        print(checked_TFFTF)
+        print(checked_TFFFT)
+        print(checked_FTTFF)
+        print(checked_FTFTF)
+        print(checked_FTFFT)
+        print(checked_FFTTF)
+        print(checked_FFTFT)
+        print(checked_FFFTT)
+        print(checked_TFFFF)
+        print(checked_FTFFF)
+        print(checked_FFTFF)
+        print(checked_FFFTF)
+        print(checked_FFFFT)
     elif mode == '5':
-        parser(True, True, True, True, True)
-        parser(True, True, True, True, False)
-        parser(True, True, True, False, True)
-        parser(True, True, False, True, True)
-        parser(True, False, True, True, True)
-        parser(False, True, True, True, True)
-        parser(True, True, True, False, False)
-        parser(True, True, False, True, False)
-        parser(True, True, False, False, True)
-        parser(True, False, True, True, False)
-        parser(True, False, True, False, True)
-        parser(True, False, False, True, True)
-        parser(False, True, True, True, False)
-        parser(False, True, True, False, True)
-        parser(False, True, False, True, True)
-        parser(False, False, True, True, True)
-        parser(True, True, False, False, False)
-        parser(True, False, True, False, False)
-        parser(True, False, False, True, False)
-        parser(True, False, False, False, True)
-        parser(False, True, True, False, False)
-        parser(False, True, False, True, False)
-        parser(False, True, False, False, True)
-        parser(False, False, True, True, False)
-        parser(False, False, True, False, True)
-        parser(False, False, False, True, True)
-        parser(True, False, False, False, False)
-        parser(False, True, False, False, False)
-        parser(False, False, True, False, False)
-        parser(False, False, False, True, False)
-        parser(False, False, False, False, True)
-        parser(False, False, False, False, False)
+        parser(True, True, True, True, True)       # TTTTT  # 0
+        parser(True, True, True, True, False)      # TTTTF  # 1
+        parser(True, True, True, False, True)      # TTTFT  # 1
+        parser(True, True, False, True, True)      # TTFTT  # 1
+        parser(True, False, True, True, True)      # TFTTT  # 1
+        parser(False, True, True, True, True)      # FTTTT  # 1
+        parser(True, True, True, False, False)     # TTTFF  # 2
+        parser(True, True, False, True, False)     # TTFTF  # 2
+        parser(True, True, False, False, True)     # TTFFT  # 2
+        parser(True, False, True, True, False)     # TFTTF  # 2
+        parser(True, False, True, False, True)     # TFTFT  # 2
+        parser(True, False, False, True, True)     # TFFTT  # 2
+        parser(False, True, True, True, False)     # FTTTF  # 2
+        parser(False, True, True, False, True)     # FTTFT  # 2
+        parser(False, True, False, True, True)     # FTFTT  # 2
+        parser(False, False, True, True, True)     # FFTTT  # 2
+        parser(True, True, False, False, False)    # TTFFF  # 3
+        parser(True, False, True, False, False)    # TFTFF  # 3
+        parser(True, False, False, True, False)    # TFFTF  # 3
+        parser(True, False, False, False, True)    # TFFFT  # 3
+        parser(False, True, True, False, False)    # FTTFF  # 3
+        parser(False, True, False, True, False)    # FTFTF  # 3
+        parser(False, True, False, False, True)    # FTFFT  # 3
+        parser(False, False, True, True, False)    # FFTTF  # 3
+        parser(False, False, True, False, True)    # FFTFT  # 3
+        parser(False, False, False, True, True)    # FFFTT  # 3
+        parser(True, False, False, False, False)   # TFFFF  # 4
+        parser(False, True, False, False, False)   # FTFFF  # 4
+        parser(False, False, True, False, False)   # FFTFF  # 4
+        parser(False, False, False, True, False)   # FFFTF  # 4
+        parser(False, False, False, False, True)   # FFFFT  # 4
+        parser(False, False, False, False, False)  # FFFFF  # 5
+        print(checked_TTTTT)
+        print(checked_TTTTF)
+        print(checked_TTTFT)
+        print(checked_TTFTT)
+        print(checked_TFTTT)
+        print(checked_FTTTT)
+        print(checked_TTTFF)
+        print(checked_TTFTF)
+        print(checked_TTFFT)
+        print(checked_TFTTF)
+        print(checked_TFTFT)
+        print(checked_TFFTT)
+        print(checked_FTTTF)
+        print(checked_FTTFT)
+        print(checked_FTFTT)
+        print(checked_FFTTT)
+        print(checked_TTFFF)
+        print(checked_TFTFF)
+        print(checked_TFFTF)
+        print(checked_TFFFT)
+        print(checked_FTTFF)
+        print(checked_FTFTF)
+        print(checked_FTFFT)
+        print(checked_FFTTF)
+        print(checked_FFTFT)
+        print(checked_FFFTT)
+        print(checked_TFFFF)
+        print(checked_FTFFF)
+        print(checked_FFTFF)
+        print(checked_FFFTF)
+        print(checked_FFFFT)
+        print(checked_FFFFF)
