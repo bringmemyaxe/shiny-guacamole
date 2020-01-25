@@ -874,7 +874,7 @@ while True:
         parser(False, False, True, False, True)  # FFTFT  # 3
         parser(False, False, False, True, True)  # FFFTT  # 3
         print('Possibilities to win:')
-        print('Do not change cards', checked_TTTTT)
+        print('       Do not change cards', checked_TTTTT)
         print('Change ___ ___ ___ ___ 5TH', checked_TTTTF)
         print('Change ___ ___ ___ 4TH ___', checked_TTTFT)
         print('Change ___ ___ 3RD ___ ___', checked_TTFTT)
