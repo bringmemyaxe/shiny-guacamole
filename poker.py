@@ -383,17 +383,17 @@ while True:
         global checked_FFFFF
         your_cards = []
         if number_of_non_held_cards == 0:
-            end_iteration = 1
+            end_iteration = 0.1
         elif number_of_non_held_cards == 1:
-            end_iteration = 47
+            end_iteration = 4.7
         elif number_of_non_held_cards == 2:
-            end_iteration = 2162
+            end_iteration = 216.2
         elif number_of_non_held_cards == 3:
-            end_iteration = 97290
+            end_iteration = 9729
         elif number_of_non_held_cards == 4:
-            end_iteration = 4280760
+            end_iteration = 428076
         elif number_of_non_held_cards == 5:
-            end_iteration = 184072680
+            end_iteration = 18407268
         probability_to_win = 0
         if hold_1st_card:
             your_cards.append(first_card)
