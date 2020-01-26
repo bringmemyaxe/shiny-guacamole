@@ -35,12 +35,9 @@ while True:
                                             input_is_not_filled = False
 
 
-    def progressbar(value, endvalue, bar_length=20):
+    def progressbar(value, endvalue):
         percent = float(value) / endvalue
-        arrow = '-' * int(round(percent * bar_length) - 1) + '>'
-        spaces = ' ' * (bar_length - len(arrow))
-
-        sys.stdout.write("\rPercent: [{0}] {1}%".format(arrow + spaces, int(round(percent))))
+        sys.stdout.write("\r{0}% is done… Wait…".format(int(round(percent))))
         sys.stdout.flush()
 
 
@@ -296,11 +293,15 @@ while True:
         check_royal_flush()
         if royal_flush:
             probability_to_win += 1
+            case_royal_flush[win_index] += 1
+            case_win[win_index] += 1
         else:
             straight_flush = False
             check_straight_flush()
             if straight_flush:
                 probability_to_win += 1
+                case_straight_flush[win_index] += 1
+                case_win[win_index] += 1
             else:
                 four_of_a_kind = False
                 current_card_meanings = []
@@ -311,36 +312,50 @@ while True:
                 check_four_of_a_kind()
                 if four_of_a_kind:
                     probability_to_win += 1
+                    case_four_of_a_kind[win_index] += 1
+                    case_win[win_index] += 1
                 else:
                     full_house = False
                     check_full_house()
                     if full_house:
                         probability_to_win += 1
+                        case_full_house[win_index] += 1
+                        case_win[win_index] += 1
                     else:
                         flush = False
                         check_flush()
                         if flush:
                             probability_to_win += 1
+                            case_flush[win_index] += 1
+                            case_win[win_index] += 1
                         else:
                             straight = False
                             check_straight()
                             if straight:
                                 probability_to_win += 1
+                                case_straight[win_index] += 1
+                                case_win[win_index] += 1
                             else:
                                 three_of_a_kind = False
                                 check_three_of_a_kind()
                                 if three_of_a_kind:
                                     probability_to_win += 1
+                                    case_three_of_a_kind[win_index] += 1
+                                    case_win[win_index] += 1
                                 else:
                                     two_pairs = False
                                     check_two_pairs()
                                     if two_pairs:
                                         probability_to_win += 1
+                                        case_two_pairs[win_index] += 1
+                                        case_win[win_index] += 1
                                     else:
                                         jacks_or_better = False
                                         check_jacks_or_better()
                                         if jacks_or_better:
                                             probability_to_win += 1
+                                            case_jacks_or_better[win_index] += 1
+                                            case_win[win_index] += 1
 
 
     def parser(hold_1st_card, hold_2nd_card, hold_3rd_card, hold_4th_card, hold_5th_card):
@@ -349,6 +364,7 @@ while True:
         global end_iteration
         global current_iteration
         global probability_to_win
+        global win_index
         global checked_TTTTT
         global checked_TTTTF
         global checked_TTTFT
@@ -395,6 +411,7 @@ while True:
         elif number_of_non_held_cards == 5:
             end_iteration = 18407268
         probability_to_win = 0
+        win_index += 1
         if hold_1st_card:
             your_cards.append(first_card)
             if hold_2nd_card:
@@ -675,7 +692,9 @@ while True:
                                             your_cards.remove(new_card3)
                                 your_cards.remove(new_card2)
                     your_cards.remove(new_card1)
-        if number_of_non_held_cards == 1:
+        if number_of_non_held_cards == 0:
+            probability_to_win = (probability_to_win / 1) * 100
+        elif number_of_non_held_cards == 1:
             probability_to_win = (probability_to_win / 47) * 100
         elif number_of_non_held_cards == 2:
             probability_to_win = (probability_to_win / 2162) * 100
@@ -781,6 +800,337 @@ while True:
                             checked_FFFFF = probability_to_win
 
 
+    def interpreter():
+        print('')
+        print('These are the best options, as you can see:')
+        results = []
+        results.append(checked_TTTTT)
+        results.append(checked_TTTTF)
+        results.append(checked_TTTFT)
+        results.append(checked_TTFTT)
+        results.append(checked_TFTTT)
+        results.append(checked_FTTTT)
+        try:
+            results.append(checked_TTTFF)
+        except NameError:
+            pass
+        try:
+            results.append(checked_TTFTF)
+        except NameError:
+            pass
+        try:
+            results.append(checked_TTFFT)
+        except NameError:
+            pass
+        try:
+            results.append(checked_TFTTF)
+        except NameError:
+            pass
+        try:
+            results.append(checked_TFTFT)
+        except NameError:
+            pass
+        try:
+            results.append(checked_TFFTT)
+        except NameError:
+            pass
+        try:
+            results.append(checked_FTTTF)
+        except NameError:
+            pass
+        try:
+            results.append(checked_FTTFT)
+        except NameError:
+            pass
+        try:
+            results.append(checked_FTFTT)
+        except NameError:
+            pass
+        try:
+            results.append(checked_FFTTT)
+        except NameError:
+            pass
+        try:
+            results.append(checked_TTFFF)
+        except NameError:
+            pass
+        try:
+            results.append(checked_TFTFF)
+        except NameError:
+            pass
+        try:
+            results.append(checked_TFFTF)
+        except NameError:
+            pass
+        try:
+            results.append(checked_TFFFT)
+        except NameError:
+            pass
+        try:
+            results.append(checked_FTTFF)
+        except NameError:
+            pass
+        try:
+            results.append(checked_FTFTF)
+        except NameError:
+            pass
+        try:
+            results.append(checked_FTFFT)
+        except NameError:
+            pass
+        try:
+            results.append(checked_FFTTF)
+        except NameError:
+            pass
+        try:
+            results.append(checked_FFTFT)
+        except NameError:
+            pass
+        try:
+            results.append(checked_FFFTT)
+        except NameError:
+            pass
+        try:
+            results.append(checked_TFFFF)
+        except NameError:
+            pass
+        try:
+            results.append(checked_FTFFF)
+        except NameError:
+            pass
+        try:
+            results.append(checked_FFTFF)
+        except NameError:
+            pass
+        try:
+            results.append(checked_FFFTF)
+        except NameError:
+            pass
+        try:
+            results.append(checked_FFFFT)
+        except NameError:
+            pass
+        try:
+            results.append(checked_FFFFF)
+        except NameError:
+            pass
+        best_option = 0
+        for num1 in results:
+            for num2 in results:
+                if num1 <= num2 and best_option <= num2:
+                    best_option = num2
+        index = -1
+        for result in results:
+            index += 1
+            if result == best_option:
+                print('')
+                print(dialogue[index], result)
+                print('If you do that, it is going to be a …:')
+                non_prepared_wins = []
+                non_prepared_wins.append(case_royal_flush[index])
+                non_prepared_wins.append(case_straight_flush[index])
+                non_prepared_wins.append(case_four_of_a_kind[index])
+                non_prepared_wins.append(case_full_house[index])
+                non_prepared_wins.append(case_flush[index])
+                non_prepared_wins.append(case_straight[index])
+                non_prepared_wins.append(case_three_of_a_kind[index])
+                non_prepared_wins.append(case_two_pairs[index])
+                non_prepared_wins.append(case_jacks_or_better[index])
+                hand_names = [' royal flush', ' straight flush', ' four of a kind', ' full house', ' flush',
+                              ' straight', ' three of a kind', ' two pairs', ' jacks or better']
+                wins = []
+                try:
+                    while True:
+                        biggest_number = 0
+                        for num1 in non_prepared_wins:
+                            for num2 in non_prepared_wins:
+                                if num1 <= num2 and biggest_number <= num2:
+                                    biggest_number = num2
+                                    non_prepared_wins_index = non_prepared_wins.index(biggest_number)
+                        hand_percent = (biggest_number / case_win[index]) * 100
+                        hand_chance = str(hand_percent) + hand_names[non_prepared_wins_index]
+                        if hand_percent != 0:
+                            wins.append(hand_chance)
+                        del non_prepared_wins[non_prepared_wins_index]
+                        del hand_names[non_prepared_wins_index]
+                except IndexError:
+                    pass
+                for hand in wins:
+                    print(hand)
+
+
+    def outputer():
+        global dialogue
+        print('')
+        print('Actually, output of the calculations.')
+        print('Your cards are:')
+        all_possible_cards = [tup[0] + tup[1] for tup in itertools.product(ranks, suits)]
+        actual_card_icons = {}
+        unicode_list = ['🃑 ', '🃁 ', '🂱 ', '🂡 ', '🃒 ', '🃂 ', '🂲 ', '🂢 ', '🃓 ', '🃃 ', '🂳 ', '🂣 ',
+                        '🃔 ', '🃄 ', '🂴 ', '🂤 ', '🃕 ', '🃅 ', '🂵 ', '🂥 ', '🃖 ', '🃆 ', '🂶 ', '🂦 ',
+                        '🃗 ', '🃇 ', '🂷 ', '🂧 ', '🃘 ', '🃈 ', '🂸 ', '🂨 ', '🃙 ', '🃉 ', '🂹 ', '🂩 ',
+                        '🃚 ', '🃊 ', '🂺 ', '🂪 ', '🃛 ', '🃋 ', '🂻 ', '🂫 ', '🃝 ', '🃍 ', '🂽 ', '🂭 ',
+                        '🃞 ', '🃎 ', '🂾 ', '🂮 ']
+        unicode_index = -1
+        for card in all_possible_cards:
+            unicode_index += 1
+            actual_card_icons[card] = unicode_list[unicode_index]
+        first_card_icon = actual_card_icons.get(first_card)
+        second_card_icon = actual_card_icons.get(second_card)
+        third_card_icon = actual_card_icons.get(third_card)
+        fourth_card_icon = actual_card_icons.get(fourth_card)
+        fifth_card_icon = actual_card_icons.get(fifth_card)
+        actual_card_names = {}
+        for card in all_possible_cards:
+            temp_data = list(card)
+            current_card_meanings = []
+            for meaning in temp_data:
+                current_card_meanings.append(meaning)
+            if current_card_meanings.count('A') == 1:
+                rankname = 'Ace of '
+            elif current_card_meanings.count('2') == 1:
+                rankname = 'Two of '
+            elif current_card_meanings.count('3') == 1:
+                rankname = 'Three of '
+            elif current_card_meanings.count('4') == 1:
+                rankname = 'Four of '
+            elif current_card_meanings.count('5') == 1:
+                rankname = 'Five of '
+            elif current_card_meanings.count('6') == 1:
+                rankname = 'Six of '
+            elif current_card_meanings.count('7') == 1:
+                rankname = 'Seven of '
+            elif current_card_meanings.count('8') == 1:
+                rankname = 'Eight of '
+            elif current_card_meanings.count('9') == 1:
+                rankname = 'Nine of '
+            elif current_card_meanings.count('0') == 1:
+                rankname = 'Ten of '
+            elif current_card_meanings.count('J') == 1:
+                rankname = 'Jack of '
+            elif current_card_meanings.count('Q') == 1:
+                rankname = 'Queen of '
+            elif current_card_meanings.count('K') == 1:
+                rankname = 'King of '
+            if current_card_meanings.count('C') == 1:
+                suitname = 'clubs'
+            elif current_card_meanings.count('D') == 1:
+                suitname = 'diamonds'
+            elif current_card_meanings.count('H') == 1:
+                suitname = 'hearts'
+            elif current_card_meanings.count('S') == 1:
+                suitname = 'spades'
+            actual_card_names[card] = rankname + suitname
+        unicode_index = -1
+        for every_card, name in actual_card_names.items():
+            unicode_index += 1
+            actual_card_names[every_card] = unicode_list[unicode_index] + name
+        your_first_card = actual_card_names.get(first_card)
+        your_second_card = actual_card_names.get(second_card)
+        your_third_card = actual_card_names.get(third_card)
+        your_fourth_card = actual_card_names.get(fourth_card)
+        your_fifth_card = actual_card_names.get(fifth_card)
+        print(first_card_icon + second_card_icon + third_card_icon + fourth_card_icon + fifth_card_icon)
+        print('')
+        print(your_first_card)
+        print(your_second_card)
+        print(your_third_card)
+        print(your_fourth_card)
+        print(your_fifth_card)
+        print('Possibilities to win (percent):')
+        dialogue = ['       If you do not change cards',
+                    'If you change ___ ___ ___ ___ 5TH',
+                    'If you change ___ ___ ___ 4TH ___',
+                    'If you change ___ ___ 3RD ___ ___',
+                    'If you change ___ 2ND ___ ___ ___',
+                    'If you change 1ST ___ ___ ___ ___',
+                    'If you change ___ ___ ___ 4TH 5TH',
+                    'If you change ___ ___ 3RD ___ 5TH',
+                    'If you change ___ ___ 3RD 4TH ___',
+                    'If you change ___ 2ND ___ ___ 5TH',
+                    'If you change ___ 2ND ___ 4TH ___',
+                    'If you change ___ 2ND 3RD ___ ___',
+                    'If you change 1ST ___ ___ ___ 5TH',
+                    'If you change 1ST ___ ___ 4TH ___',
+                    'If you change 1ST ___ 3RD ___ ___',
+                    'If you change 1ST 2ND ___ ___ ___',
+                    'If you change ___ ___ 3RD 4TH 5TH',
+                    'If you change ___ 2ND ___ 4TH 5TH',
+                    'If you change ___ 2ND 3RD ___ 5TH',
+                    'If you change ___ 2ND 3RD 4TH ___',
+                    'If you change 1ST ___ ___ 4TH 5TH',
+                    'If you change 1ST ___ 3RD ___ 5TH',
+                    'If you change 1ST ___ 3RD 4TH ___',
+                    'If you change 1ST 2ND ___ ___ 5TH',
+                    'If you change 1ST 2ND ___ 4TH ___',
+                    'If you change 1ST 2ND 3RD ___ ___',
+                    'If you change ___ 2ND 3RD 4TH 5TH',
+                    'If you change 1ST ___ 3RD 4TH 5TH',
+                    'If you change 1ST 2ND ___ 4TH 5TH',
+                    'If you change 1ST 2ND 3RD ___ 5TH',
+                    'If you change 1ST 2ND 3RD 4TH ___',
+                    '      If you change all the cards']
+        print(dialogue[0], checked_TTTTT)
+        print(dialogue[1], checked_TTTTF)
+        print(dialogue[2], checked_TTTFT)
+        print(dialogue[3], checked_TTFTT)
+        print(dialogue[4], checked_TFTTT)
+        print(dialogue[5], checked_FTTTT)
+        if number_of_non_held_cards == 2 or number_of_non_held_cards == 3 or number_of_non_held_cards == 4 or number_of_non_held_cards == 5:
+            print(dialogue[6], checked_TTTFF)
+            print(dialogue[7], checked_TTFTF)
+            print(dialogue[8], checked_TTFFT)
+            print(dialogue[9], checked_TFTTF)
+            print(dialogue[10], checked_TFTFT)
+            print(dialogue[11], checked_TFFTT)
+            print(dialogue[12], checked_FTTTF)
+            print(dialogue[13], checked_FTTFT)
+            print(dialogue[14], checked_FTFTT)
+            print(dialogue[15], checked_FFTTT)
+        if number_of_non_held_cards == 3 or number_of_non_held_cards == 4 or number_of_non_held_cards == 5:
+            print(dialogue[16], checked_TTFFF)
+            print(dialogue[17], checked_TFTFF)
+            print(dialogue[18], checked_TFFTF)
+            print(dialogue[19], checked_TFFFT)
+            print(dialogue[20], checked_FTTFF)
+            print(dialogue[21], checked_FTFTF)
+            print(dialogue[22], checked_FTFFT)
+            print(dialogue[23], checked_FFTTF)
+            print(dialogue[24], checked_FFTFT)
+            print(dialogue[25], checked_FFFTT)
+        if number_of_non_held_cards == 4 or number_of_non_held_cards == 5:
+            print(dialogue[26], checked_TFFFF)
+            print(dialogue[27], checked_FTFFF)
+            print(dialogue[28], checked_FFTFF)
+            print(dialogue[29], checked_FFFTF)
+            print(dialogue[30], checked_FFFFT)
+        if number_of_non_held_cards == 5:
+            print(dialogue[31], checked_FFFFF)
+        interpreter()
+
+
+    case_royal_flush = []
+    case_win = []
+    case_straight_flush = []
+    case_four_of_a_kind = []
+    case_full_house = []
+    case_flush = []
+    case_straight = []
+    case_three_of_a_kind = []
+    case_two_pairs = []
+    case_jacks_or_better = []
+    for i in range(1, 33):
+        case_royal_flush.append(int())
+        case_win.append(int())
+        case_straight_flush.append(int())
+        case_four_of_a_kind.append(int())
+        case_full_house.append(int())
+        case_flush.append(int())
+        case_straight.append(int())
+        case_three_of_a_kind.append(int())
+        case_two_pairs.append(int())
+        case_jacks_or_better.append(int())
+    win_index = -1
     mode = input('CHOOSE MODE: ')
     if mode == '1':
         number_of_non_held_cards = 0
@@ -793,12 +1143,7 @@ while True:
         parser(True, True, False, True, True)  # TTFTT  # 1
         parser(True, False, True, True, True)  # TFTTT  # 1
         parser(False, True, True, True, True)  # FTTTT  # 1
-        print(checked_TTTTT)
-        print(checked_TTTTF)
-        print(checked_TTTFT)
-        print(checked_TTFTT)
-        print(checked_TFTTT)
-        print(checked_FTTTT)
+        outputer()
     elif mode == '2':
         number_of_non_held_cards = 0
         current_iteration = 0
@@ -822,22 +1167,7 @@ while True:
         parser(False, True, True, False, True)  # FTTFT  # 2
         parser(False, True, False, True, True)  # FTFTT  # 2
         parser(False, False, True, True, True)  # FFTTT  # 2
-        print(checked_TTTTT)
-        print(checked_TTTTF)
-        print(checked_TTTFT)
-        print(checked_TTFTT)
-        print(checked_TFTTT)
-        print(checked_FTTTT)
-        print(checked_TTTFF)
-        print(checked_TTFTF)
-        print(checked_TTFFT)
-        print(checked_TFTTF)
-        print(checked_TFTFT)
-        print(checked_TFFTT)
-        print(checked_FTTTF)
-        print(checked_FTTFT)
-        print(checked_FTFTT)
-        print(checked_FFTTT)
+        outputer()
     elif mode == '3':
         number_of_non_held_cards = 0
         current_iteration = 0
@@ -873,33 +1203,7 @@ while True:
         parser(False, False, True, True, False)  # FFTTF  # 3
         parser(False, False, True, False, True)  # FFTFT  # 3
         parser(False, False, False, True, True)  # FFFTT  # 3
-        print('Possibilities to win:')
-        print('       Do not change cards', checked_TTTTT)
-        print('Change ___ ___ ___ ___ 5TH', checked_TTTTF)
-        print('Change ___ ___ ___ 4TH ___', checked_TTTFT)
-        print('Change ___ ___ 3RD ___ ___', checked_TTFTT)
-        print('Change ___ 2ND ___ ___ ___', checked_TFTTT)
-        print('Change 1ST ___ ___ ___ ___', checked_FTTTT)
-        print('Change ___ ___ ___ 4TH 5TH', checked_TTTFF)
-        print('Change ___ ___ 3RD ___ 5TH', checked_TTFTF)
-        print('Change ___ ___ 3RD 4TH ___', checked_TTFFT)
-        print('Change ___ 2ND ___ ___ 5TH', checked_TFTTF)
-        print('Change ___ 2ND ___ 4TH ___', checked_TFTFT)
-        print('Change ___ 2ND 3RD ___ ___', checked_TFFTT)
-        print('Change 1ST ___ ___ ___ 5TH', checked_FTTTF)
-        print('Change 1ST ___ ___ 4TH ___', checked_FTTFT)
-        print('Change 1ST ___ 3RD ___ ___', checked_FTFTT)
-        print('Change 1ST 2ND ___ ___ ___', checked_FFTTT)
-        print('Change ___ ___ 3RD 4TH 5TH', checked_TTFFF)
-        print('Change ___ 2ND ___ 4TH 5TH', checked_TFTFF)
-        print('Change ___ 2ND 3RD ___ 5TH', checked_TFFTF)
-        print('Change ___ 2ND 3RD 4TH ___', checked_TFFFT)
-        print('Change 1ST ___ ___ 4TH 5TH', checked_FTTFF)
-        print('Change 1ST ___ 3RD ___ 5TH', checked_FTFTF)
-        print('Change 1ST ___ 3RD 4TH ___', checked_FTFFT)
-        print('Change 1ST 2ND ___ ___ 5TH', checked_FFTTF)
-        print('Change 1ST 2ND ___ 4TH ___', checked_FFTFT)
-        print('Change 1ST 2ND 3RD ___ ___', checked_FFFTT)
+        outputer()
     elif mode == '4':
         number_of_non_held_cards = 0
         current_iteration = 0
@@ -942,37 +1246,7 @@ while True:
         parser(False, False, True, False, False)  # FFTFF  # 4
         parser(False, False, False, True, False)  # FFFTF  # 4
         parser(False, False, False, False, True)  # FFFFT  # 4
-        print(checked_TTTTT)
-        print(checked_TTTTF)
-        print(checked_TTTFT)
-        print(checked_TTFTT)
-        print(checked_TFTTT)
-        print(checked_FTTTT)
-        print(checked_TTTFF)
-        print(checked_TTFTF)
-        print(checked_TTFFT)
-        print(checked_TFTTF)
-        print(checked_TFTFT)
-        print(checked_TFFTT)
-        print(checked_FTTTF)
-        print(checked_FTTFT)
-        print(checked_FTFTT)
-        print(checked_FFTTT)
-        print(checked_TTFFF)
-        print(checked_TFTFF)
-        print(checked_TFFTF)
-        print(checked_TFFFT)
-        print(checked_FTTFF)
-        print(checked_FTFTF)
-        print(checked_FTFFT)
-        print(checked_FFTTF)
-        print(checked_FFTFT)
-        print(checked_FFFTT)
-        print(checked_TFFFF)
-        print(checked_FTFFF)
-        print(checked_FFTFF)
-        print(checked_FFFTF)
-        print(checked_FFFFT)
+        outputer()
     elif mode == '5':
         number_of_non_held_cards = 0
         current_iteration = 0
@@ -1018,35 +1292,4 @@ while True:
         number_of_non_held_cards = 5
         current_iteration = 0
         parser(False, False, False, False, False)  # FFFFF  # 5
-        print(checked_TTTTT)
-        print(checked_TTTTF)
-        print(checked_TTTFT)
-        print(checked_TTFTT)
-        print(checked_TFTTT)
-        print(checked_FTTTT)
-        print(checked_TTTFF)
-        print(checked_TTFTF)
-        print(checked_TTFFT)
-        print(checked_TFTTF)
-        print(checked_TFTFT)
-        print(checked_TFFTT)
-        print(checked_FTTTF)
-        print(checked_FTTFT)
-        print(checked_FTFTT)
-        print(checked_FFTTT)
-        print(checked_TTFFF)
-        print(checked_TFTFF)
-        print(checked_TFFTF)
-        print(checked_TFFFT)
-        print(checked_FTTFF)
-        print(checked_FTFTF)
-        print(checked_FTFFT)
-        print(checked_FFTTF)
-        print(checked_FFTFT)
-        print(checked_FFFTT)
-        print(checked_TFFFF)
-        print(checked_FTFFF)
-        print(checked_FFTFF)
-        print(checked_FFFTF)
-        print(checked_FFFFT)
-        print(checked_FFFFF)
+        outputer()
